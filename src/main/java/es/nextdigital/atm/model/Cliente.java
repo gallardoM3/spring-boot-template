@@ -16,7 +16,7 @@ import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
 /**
- * Clase Cliente
+ * Clase Cliente tiene n cuentas asocidadas
  * @author quality
  *
  */

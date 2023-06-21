@@ -5,11 +5,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.nextdigital.atm.exceptions.ATMException;
 import es.nextdigital.atm.model.Cuenta;
+import es.nextdigital.atm.model.Tarjeta;
 import es.nextdigital.atm.services.CuentaService;
 
 
@@ -28,4 +31,24 @@ public class CuentaController {
 		return cuentaService.getCuenta(idCuenta);
 
 	}
+	
+	@PutMapping(URL_CUENTA + "/{idCuenta}/sacarDinero")
+	public Optional<Cuenta> sacarDineroByIdCuenta(
+			@PathVariable("idCuenta") Long idCuenta,
+			@RequestBody Tarjeta tarjeta,
+			@RequestBody float importe) throws ATMException {
+		return cuentaService.sacarDineroFromCuenta(idCuenta, tarjeta, importe);
+
+	}
+	
+	@PutMapping(URL_CUENTA + "/{idCuenta}/ingresarDinero")
+	public Optional<Cuenta> ingresasrDineroByIdCuenta(
+			@PathVariable("idCuenta") Long idCuenta,
+			@RequestBody Tarjeta tarjeta,
+			@RequestBody float importe) throws ATMException {
+		return cuentaService.ingresarDineroFromCuenta(idCuenta, tarjeta, importe);
+
+	}
+	
+	
 }

@@ -1,6 +1,6 @@
 package es.nextdigital.atm.model;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -13,36 +13,45 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
+
 /**
- * La clase Cuenta tiene un cliente asociadado, n movimientos y n tarjetas.
+ * La tarjeta pertenece a un Cliente, tiene n movimientos y una cuenta asociada
  * @author quality
  *
  */
 @Data
 @Entity
-@Table(name="Cuenta")
+@Table(name="Tarjeta")
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Cuenta {
-	private Long idCuenta;
+public class Tarjeta {
+
+	private Long idTarjeta;
 	
-	private String numeroCuenta;
+	private String numeroTarjeta;
+	
+	private String codigoTarjeta;
+	
+	//Hubiera hecho un enum o algo pero no me da tiempo
+	private String tipoTarjeta;
 	
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="idCliente")
 	private Cliente titular;
 	
-	private float saldo;
+	private Double saldo;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="idMovimiento")
 	private List<Movimiento> movimientos;
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="idTarjeta")
-	private List<Tarjeta> tarjetas;
 	
-	private LocalDateTime fechaCreacion;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="idCuienta")
+	private Cuenta cuenta;
 	
-	private LocalDateTime fechaBaja;
+	private Date fechaCreacion;
+	
+	private Date fechaBaja;
+	
+	private boolean activada;
 	
 }

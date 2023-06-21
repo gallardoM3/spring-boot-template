@@ -19,7 +19,7 @@ import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
 /**
- * Clase Movimiento Para saber el tipo de movimiento realizado en la Cuenta
+ * Clase Movimiento tiene n tipos de movimientos
  * 
  * @author quality
  *

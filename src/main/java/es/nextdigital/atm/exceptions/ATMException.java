@@ -1,18 +1,11 @@
 package es.nextdigital.atm.exceptions;
 
-import lombok.Setter;
-
 public class ATMException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
 	public static final String UNKNOWN = "UNKNOWN";
 	public static final String INTERNAL_ERROR = "INTERNAL_ERROR";
-	
-	/**
-    * Descripción genérica del error. 
-    * */
-    private String info;
 
     /**
      * Valor del result.info.
@@ -25,14 +18,7 @@ public class ATMException extends Exception {
      * */
     private String errorMessage;
     
-    /**
-     * Código HTTP de la respuesta. 
-     * */
-    private int httpCode;
-
-    private ATMException(int httpCode, String info, Integer errorCode, String errorMessage) {
-        this.httpCode = httpCode;
-        this.info = info;
+    public ATMException(Integer errorCode, String errorMessage) {
         this.errorCode = errorCode;
         this.errorMessage = errorMessage;
     }

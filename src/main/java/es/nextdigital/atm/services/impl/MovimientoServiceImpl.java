@@ -24,7 +24,17 @@ public class MovimientoServiceImpl implements MovimientoService{
 	@Autowired
 	MovimientoRepository movimientosRepository;
 	
-	
+	/**
+	 * Consultar los movimientos de cualquiera de sus cuentas, eligiendo cuál. 
+	 * ¿Qué entendemos por movimientos? Ingresos y retiradas de efectivo, comisiones que se le hayan cargado, 
+	 * transferencias salientes y entrantes. No hace falta que pueda filtrar ni que sean endpoints separados, 
+	 * pero sí que tiene que saber de qué tipo es cada movimiento.
+	 * 
+	 * @param idCuenta
+	 * @param tipoMovimiento
+	 * @return
+	 * @throws ATMException
+	 */
 	@Override
 	public Optional<List<Movimiento>> getMovimientosByIdCuentaAndTipoMovimiento(Long idCuenta, TipoMovimiento tipo) throws ATMException {
 		return movimientosRepository.getMovimientosByIdCuentaAndTipoMovimiento(idCuenta, tipo);
