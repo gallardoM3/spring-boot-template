@@ -58,18 +58,18 @@ public class CuentaServiceImpl implements CuentaService {
 		if (idCuenta.equals(tarjeta.getCuenta().getIdCuenta())) {
 			if("DEBITO".equals(tarjeta.getTipoTarjeta())){
 				if(importe < saldoActual) {
-					cuenta = cuentaRepository.sacarDineroFromCuenta(idCuenta, importe);
+					cuenta = cuentaRepository.sacarDinero(idCuenta, importe);
 				}else {
 					throw new ATMException(5001, "No tienes saldo suficiente");
 				}
 			}else if("CREDITO".equals(tarjeta.getTipoTarjeta())) {
 				if(importe < saldoActual) {
-					cuenta = cuentaRepository.sacarDineroFromCuenta(idCuenta, importe);
+					cuenta = cuentaRepository.sacarDinero(idCuenta, importe);
 				}else {
 					throw new ATMException(5002, "Has superado el máximo de crédito disponible");
 				}
 			}else {
-				cuenta = cuentaRepository.sacarDineroFromCuenta(idCuenta, importe);				
+				cuenta = cuentaRepository.sacarDinero(idCuenta, importe);				
 			}
 		}
 		

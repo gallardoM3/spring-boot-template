@@ -8,5 +8,7 @@ import es.nextdigital.atm.exceptions.ATMException;
 import es.nextdigital.atm.model.Cuenta;
 
 public interface CuentaRepository extends CrudRepository<Cuenta, Long> {
-	Optional<Cuenta> sacarDineroFromCuenta(Long idCuenta, Float importe) throws ATMException;
+	Optional<Cuenta> sacarDinero(Long idCuenta, Float importe) throws ATMException;
+	
+	Optional<Cuenta> ingresarDinero(Long idCuenta, Float importe) throws ATMException;
 }
